@@ -3,6 +3,11 @@ const express = require('express');
 const controllers = require('./controllers');
 // import sequelize connection
 const sequelize = require('./config/connection');
+//express-handlebars
+// const exphbs = require('express-handlebars');
+// const hbs = exhbs.create({});
+
+//need to include passport
 
 const exphbs = require('express-handlebars');
 
@@ -18,6 +23,11 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+//serve up public files
+// app.use(express.static(path.join(__dirname, 'public')));
+//express-handlebars
+// app.engine('handlebars', hbs.engine);
+// app.set('view engine', 'handlebars');
 
 app.use(controllers);
 
