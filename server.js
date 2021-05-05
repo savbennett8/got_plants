@@ -1,6 +1,6 @@
 // const path = require('path');
 const express = require('express');
-// const controllers = require('./controllers');
+const controllers = require('./controllers');
 // import sequelize connection
 const sequelize = require('./config/connection');
 
@@ -19,9 +19,8 @@ app.set('view engine', 'handlebars');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// app.use(controllers);
-app.use('/', require('./controllers/view'));
-app.use('/post', require('./controllers/post'));
+app.use(controllers);
+
 // sync sequelize models to the database, then turn on the server
 // sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log(`App listening on port ${PORT}!`));
