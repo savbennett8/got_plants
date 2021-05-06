@@ -6,7 +6,7 @@ const sequelize = require('./config/connection');
 const helper = require('./utils/helper');
 //express-handlebars
 const exphbs = require('express-handlebars');
-const hbs = exhbs.create({ helper });
+const hbs = exphbs.create({ helper });
 
 //need to include passport
 
