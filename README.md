@@ -2,7 +2,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Description
-This plant blog is your go-to for all things plants! Do you have questions about your own plants and want to get other plant lover's opinions? Create an account and post your question so others can comment their input! Do you want to show off your beautiful plant? Did you hear a fun fact about a plant you want to share with others? Post them here to share with other plant lovers! You can also search through existing posts to see if someone else has already posted what you're looking for. 
+This plant blog is your go-to for all things plants! Do you have questions about your own plants and want to get other plant lover's opinions? Create an account and post your question so others can comment their input! Did you hear a fun fact about a plant you want to share with others? Post them here to share with other plant lovers! You can also search through existing posts to see if someone else has already posted what you're looking for. 
 
 ## Table of Contents
 * [Installation](https://github.com/savbennett8/got_plants/tree/main#installation)
