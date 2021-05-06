@@ -52,11 +52,9 @@ This project was created by:
 <br> [Savannah Bennett](https://github.com/savbennett8)
 <br> [Adrian Verdusco](https://github.com/adriancv-coder)
 <br> [Dan Boothe](https://github.com/dboothe92)
-<br> [Danny Pereira](https://github.com/dannyp425)
 
 ### Questions
 If you have any questions, feel free to reach out to one of the creators by email:
 <br> [Savannah Bennett](savvy.bennett8@gmail.com)
-<br> [Adrian Verdusco](email)
+<br> [Adrian Verdusco](adrian.verdusco91@gmail.com)
 <br> [Dan Boothe](email)
-<br> [Danny Pereira](email)
