@@ -2,9 +2,11 @@
 const express = require('express');
 // const controllers = require('./controllers');
 const sequelize = require('./config/connection');
+//helpers
+const helper = require('./utils/helper');
 //express-handlebars
-// const exphbs = require('express-handlebars');
-// const hbs = exhbs.create({});
+const exphbs = require('express-handlebars');
+const hbs = exhbs.create({ helper });
 
 //need to include passport
 
@@ -16,8 +18,8 @@ app.use(express.urlencoded({ extended: true }));
 //serve up public files
 // app.use(express.static(path.join(__dirname, 'public')));
 //express-handlebars
-// app.engine('handlebars', hbs.engine);
-// app.set('view engine', 'handlebars');
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 
 // app.use(controllers);
 
