@@ -6,20 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Got Plants?</title>
     <link rel="stylesheet" href="/stylesheet/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="wrapper">
         <header>
+            <form id="user-form">
+                <input id="search" type="text" class="form-input" placeholder="Keyword" />
+                <button type="submit">submit</button>
+            </form>
             <h1>
-                <a href="/">Got Plants?</a>
+                <a href="/">gotplants?</a>
             </h1>
             <nav>
                 {{#if loggedIn}}
-                <a href="/dashboard">Dashboard</a>
-                <button id="logout" class="btn-no-style">Logout</button>
+                <a href="/dashboard">dashboard</a>
+                <button id="logout" class="btn-no-style">logout</button>
                 {{else}}
-                <a href="/login">Login</a>
+                <a href="/login">login</a>
                 {{/if}}
             </nav>
         </header>
@@ -27,7 +33,7 @@
             {{{ body }}}
         </main>
         <footer>
-            Happy Planting!
+            happy planting!
         </footer>
     </div>
     {{#if loggedIn}}
