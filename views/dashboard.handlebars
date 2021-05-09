@@ -1,7 +1,7 @@
 <section>
     <h2>Create New Post</h2>
 
-    <form class="new-post-form">
+    <form class="new-post-form" enctype="multipart/form-data" action="add.php" method="POST">
         <div>
             <label for="post-title">Title</label>
             <input type="text" id="post-title" name="post-title" />
@@ -13,6 +13,10 @@
         <div>
             <label for="post_body">Content</label>
             <input id="post_body" name="post_body" />
+        </div>
+        <div>
+            <label for="post_photo">Photo</label>
+            <input type="file" name="photo">
         </div>
         <button type="submit" class="btn">Create</button>
     </form>
@@ -26,8 +30,8 @@
                 {{!-- {{> post-info post}} --}}
                 <div class="title">
                     <a href="/post/{{id}}" target="_blank">{{title}}</a>
-                    {{#if post_url}}
-                    <span>({{post_url}})</span>
+                    {{#if post_photo}}
+                    <span>({{post_photo}})</span>
                     {{/if}}
                 </div>
                 <div class="body">

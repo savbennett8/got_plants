@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
             'id',
             'title',
             'post_body',
-            'post_url',
+            'post_photo',
             'created_at'
         ],
         include: [
@@ -60,7 +60,7 @@ router.get('/post/:id', (req, res) => {
             'id',
             'title',
             'post_body',
-            'post_url',
+            'post_photo',
             'created_at'
         ],
         include: [

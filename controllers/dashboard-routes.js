@@ -12,7 +12,7 @@
 //             'id',
 //             'title',
 //             'post_body',
-//             'post_url',
+//             'post_photo',
 //             'created_at'
 //         ],
 //         include: [

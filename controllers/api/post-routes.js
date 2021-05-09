@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
             'id',
             'title',
             'post_body',
-            'post_url',
+            'post_photo',
             'created_at'
         ],
         //ensures latest posted articles appear first
@@ -92,11 +92,10 @@ router.get('/:id', (req, res) => {
 
 //create a post
 // router.post('/', (req, res) => {
-//     //expects {title" 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
 //     Post.create({
 //         title: req.body.title,
 //         post_body: req.body.post_body,
-//         post_url: req.body.post_url,
+//         post_photo: req.body.post_photo,
 //         user_id: req.session.user_id
 //     })
 //         .then(dbPostData => res.json(dbPostData))
