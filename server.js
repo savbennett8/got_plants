@@ -1,23 +1,15 @@
 const path = require('path');
 const express = require('express');
-const passport = require('passport');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 const helpers = require('./utils/helpers');
 const controllers = require('./controllers');
-const flash = require('express-flash');
-
-const passportInit = require('./utils/passport');
-passportInit(passport, username => {
-    users.find(user => user.username === username)
-});
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-app.use(flash());
 const sess = {
     secret: 'THIS IS A SECRET',
     cookie: {},
@@ -27,9 +19,6 @@ const sess = {
         db: sequelize
     })
 };
-
-app.use(passport.initialize());
-app.use(passport.session(sess));
 
 app.use(session(sess));
 
