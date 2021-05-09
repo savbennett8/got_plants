@@ -3,7 +3,7 @@ const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
 
 router.get('/', (req, res) => {
-    console.log(req.session);
+    // console.log(req.session);
     Post.findAll({
         attributes: [
             'id',
@@ -32,7 +32,7 @@ router.get('/', (req, res) => {
             //pass a single post object into the homepage template
             res.render('homepage', {
                 posts,
-                loggedIn: req.session.loggedIn
+                // loggedIn: req.session.loggedIn
             });
         })
         .catch(err => {
@@ -41,15 +41,15 @@ router.get('/', (req, res) => {
         });
 });
 
-router.get('/login', (req, res) => {
-    //if user is logged in, redirect to homepage instead when 'login' is clicked
-    if (req.session.loggedIn) {
-        res.redirect('/');
-        return;
-    }
+// router.get('/login', (req, res) => {
+//     //if user is logged in, redirect to homepage instead when 'login' is clicked
+//     if (req.session.loggedIn) {
+//         res.redirect('/');
+//         return;
+//     }
 
-    res.render('login');
-});
+//     res.render('login');
+// });
 
 router.get('/post/:id', (req, res) => {
     Post.findOne({
@@ -90,7 +90,7 @@ router.get('/post/:id', (req, res) => {
             // pass data to template
             res.render('single-post', {
                 post,
-                loggedIn: req.session.loggedIn
+                // loggedIn: req.session.loggedIn
             });
         })
         .catch(err => {

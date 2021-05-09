@@ -1,6 +1,6 @@
-// const path = require('path');
+const path = require('path');
 const express = require('express');
-// const controllers = require('./controllers');
+const controllers = require('./controllers');
 const sequelize = require('./config/connection');
 //helpers
 const helper = require('./utils/helper');
@@ -16,14 +16,14 @@ const PORT = process.env.PORT || 3001;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 //serve up public files
-// app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 //express-handlebars
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
-// app.use(controllers);
+app.use(controllers);
 
 // sync sequelize models to the database, then turn on the server
-sequelize.sync({ force: false }).then(() => {
+sequelize.sync({ force: true }).then(() => {
     app.listen(PORT, () => console.log(`App listening on port ${PORT}!`));
 });
