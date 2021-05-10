@@ -22,17 +22,16 @@
         <h2>Your Posts</h2>
         <ol>
             {{#each posts as |post|}}
-            <li>
+            <ul class="post-wrapper">
                 {{> post-info post}}
                 <br>
-                <button>
-                    <a href="/dashboard/edit/{{post.id}}">edit post</a>
-                </button>
-            </li>
+                <a href="/dashboard/edit/{{post.id}}">
+                    <button>edit post</button>
+                </a>
+            </ul>
             {{/each}}
         </ol>
     </section>
     {{/if}}
 </section>
 <script src="/javascript/add-post.js"></script>
-<script src="/javascript/edit-post.js"></script>
