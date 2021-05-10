@@ -53,12 +53,7 @@ router.get('/:id', (req, res) => {
         },
         include: [{
                 model: Post,
-                attributes: [
-                    'id',
-                    'title',
-                    'post_body',
-                    'created_at'
-                ]
+                attributes: ['id', 'title', 'created_at']
             },
             {
                 model: Comment,
@@ -67,19 +62,15 @@ router.get('/:id', (req, res) => {
                     model: Post,
                     attributes: ['title']
                 }
-            },
-            {
-                model: Post,
-                attributes: ['title'],
             }
-        ]
+        ],
     })
-    .then(dbUserData => {
-        if (!dbUserData) {
-            res.status(404).json({ message: 'No user found with this id' });
-            return;
-        }
-        res.json(dbUserData);
+        .then(dbUserData => {
+            if (!dbUserData) {
+                res.status(404).json({ message: 'No user found with this id' });
+                return;
+            }
+            res.json(dbUserData);
     })
     .catch(err => {
         console.log(err);
@@ -161,5 +152,4 @@ router.delete('/:id', (req, res) => {
         res.status(500).json(err);
     });
 });
-
 module.exports = router;

@@ -1,0 +1,51 @@
+<section>
+    <h2>Create New Post</h2>
+
+    <form class="new-post-form" enctype="multipart/form-data" action="add.php" method="POST">
+        <div>
+            <label for="post-title">title</label>
+            <input type="text" id="post-title" name="post-title" />
+        </div>
+        <div>
+            <label for="post_body">content</label>
+            <input id="post_body" name="post_body" />
+        </div>
+        <div>
+            <label for="post_photo">photo</label>
+            <input type="file" name="photo">
+        </div>
+        <button type="submit" class="btn">create</button>
+    </form>
+
+    {{#if posts.length}}
+    <section>
+        <h2>Your Posts</h2>
+        <ol>
+            {{#each posts as |post|}}
+            <li>
+                {{!-- {{> post-info post}} --}}
+                <div class="title">
+                    <a href="/post/{{id}}" target="_blank">{{title}}</a>
+                    {{#if post_photo}}
+                    <span>({{post_photo}})</span>
+                    {{/if}}
+                </div>
+                <div class="body">
+                    <p>
+                        {{post_body}}
+                    </p>
+                </div>
+                <div class="meta">
+                    Created by {{user.username}} on {{format_date created_at}}
+                    |
+                    <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
+                </div>
+                |
+                <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
+            </li>
+            {{/each}}
+        </ol>
+    </section>
+    {{/if}}
+</section>
+<script src="/javascript/add-post.js"></script>

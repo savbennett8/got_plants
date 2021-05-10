@@ -2,26 +2,26 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Description
-This plant blog is your go-to for all things plants! Do you have questions about your own plants and want to get other plant lover's opinions? Create an account and post your question so others can comment their input! Do you want to show off your beautiful plant? Did you hear a fun fact about a plant you want to share with others? Post them here to share with other plant lovers! You can also search through existing posts to see if someone else has already posted what you're looking for. 
+This plant blog is your go-to for all things plants! Do you have questions about your own plants and want to get other plant lover's opinions? Create an account and post your question so others can comment their input! Did you hear a fun fact about a plant you want to share with others? Post them here to share with other plant lovers! You can also search through existing posts to see if someone else has already posted what you're looking for. 
 
 ## Table of Contents
-* [Installation](link)
-* [Usage](link)
-* [License](link)
-* [Contributing](link)
-* [Tests](link)
-* [Credits](link)
-* [Questions](link)
+* [Installation](https://github.com/savbennett8/got_plants/tree/main#installation)
+* [Usage](https://github.com/savbennett8/got_plants/tree/main#usage)
+* [License](https://github.com/savbennett8/got_plants/tree/main#license)
+* [Contributing](https://github.com/savbennett8/got_plants/tree/main#contributing)
+* [Tests](https://github.com/savbennett8/got_plants/tree/main#tests)
+* [Credits](https://github.com/savbennett8/got_plants/tree/main#credits)
+* [Questions](https://github.com/savbennett8/got_plants/tree/main#questions)
 
 ### Installation
 This application is deployed using Heroku and uses the following technologies:
-* [Node](link)
-* [Express.js](link)
-* [Handlebars.js](link)
-* [MySQL2](link)
-* [Sequelize](link)
-* [Passport](link)
-* [dotenv](link)
+* [Node](https://nodejs.org/en/)
+* [Express.js](https://expressjs.com/en/starter/installing.html)
+* [Handlebars.js](https://handlebarsjs.com/)
+* [MySQL2](https://www.npmjs.com/package/mysql2)
+* [Sequelize](https://sequelize.org/)
+* [Passport](http://www.passportjs.org/)
+* [dotenv](https://www.npmjs.com/package/dotenv)
 
 ### Usage
 <!-- Visit our live website! *****link -->
@@ -52,11 +52,9 @@ This project was created by:
 <br> [Savannah Bennett](https://github.com/savbennett8)
 <br> [Adrian Verdusco](https://github.com/adriancv-coder)
 <br> [Dan Boothe](https://github.com/dboothe92)
-<br> [Danny Pereira](https://github.com/dannyp425)
 
 ### Questions
 If you have any questions, feel free to reach out to one of the creators by email:
 <br> [Savannah Bennett](savvy.bennett8@gmail.com)
-<br> [Adrian Verdusco](email)
+<br> [Adrian Verdusco](adrian.verdusco91@gmail.com)
 <br> [Dan Boothe](email)
-<br> [Danny Pereira](email)

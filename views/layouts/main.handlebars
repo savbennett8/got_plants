@@ -2,37 +2,43 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Got Plants</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Got Plants?</title>
+    <link rel="stylesheet" href="/stylesheet/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <div class="wrapper">
-      <header class="hero">
-          <div>
-            <nav class"nav">
-                    <a href="/">Home</a>
-                    {{#if loggedIn}}
-                    <a href="/" id="logout">Logout</a>
-                    {{else}}
-                    <a href="/login">Login</a>
-                    {{/if}}
-                </nav>          
-          </div>
-
-          <h1>Got Plants</h1>
-      </header>
-
-    <main>
-      {{{ body }}}
-    </main>
-  </div>
-
+    <div class="wrapper">
+        <header class="hero">
+            <form id="user-form">
+                <input id="search" type="text" class="form-input" placeholder="Keyword" />
+                <button type="submit" id="search-btn">submit</button>
+            </form>
+            <h1>
+                <a href="/">gotplants?</a>
+            </h1>
+            <nav class="nav">
+                {{#if loggedIn}}
+                <a href="/dashboard">dashboard</a>
+                <button id="logout" class="btn-no-style">logout</button>
+                {{else}}
+                <a href="/login">login</a>
+                {{/if}}
+            </nav>
+        </header>
+        <main>
+            {{{ body }}}
+        </main>
+        <footer>
+            happy planting!
+        </footer>
+    </div>
     {{#if loggedIn}}
     <script src="/javascript/logout.js"></script>
     {{/if}}
-
 </body>
 
 </html>
