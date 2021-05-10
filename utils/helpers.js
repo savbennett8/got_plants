@@ -8,5 +8,5 @@ module.exports = {
             return `${word}s`;
         }
         return word;
-    },
+    }
 }
