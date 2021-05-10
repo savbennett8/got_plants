@@ -1,5 +1,5 @@
 <div class="title">
-    <a href="api/posts/{{id}}">{{title}}</a>
+    <a href = post/{{id}}>{{title}}</a>
 </div>
 <div class="body">
     <p>
@@ -9,5 +9,5 @@
 <div class="meta">
     Posted by {{user.username}} on {{format_date created_at}}
     |
-    <a href="api/posts/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
+    <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
 </div>
