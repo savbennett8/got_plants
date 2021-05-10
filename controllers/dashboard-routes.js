@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
             // use the ID from the session
             user_id: req.session.user_id
         },
-        attributes: ['id', 'title', 'post_body', 'post_photo', 'created_at'],
+        attributes: ['id', 'title', 'post_body', 'created_at'],
         include: [
             {
                 model: Comment,

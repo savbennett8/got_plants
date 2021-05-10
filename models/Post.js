@@ -21,9 +21,9 @@ Post.init(
             type: DataTypes.STRING,
             allowNull: false
         },
-        post_photo: {
-            type: DataTypes.STRING
-        },
+        // post_photo: {
+        //     type: DataTypes.STRING
+        // },
         user_id: {
             type: DataTypes.INTEGER,
             references: {
