@@ -24,8 +24,10 @@
             {{#each posts as |post|}}
             <li>
                 {{> post-info post}}
-                |
-                <a href="/dashboard/edit/{{post.id}}" class="edit-link">edit post</a>
+                <br>
+                <button>
+                    <a href="/dashboard/edit/{{post.id}}">edit post</a>
+                </button>
             </li>
             {{/each}}
         </ol>
@@ -33,3 +35,4 @@
     {{/if}}
 </section>
 <script src="/javascript/add-post.js"></script>
+<script src="/javascript/edit-post.js"></script>
