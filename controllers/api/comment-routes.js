@@ -16,26 +16,26 @@ router.get('/:id', (req, res) => {
             id: req.params.id
         }
     })
-    .then(dbCommentData => {
-        if (!dbCommentData) {
-            res.status(404),json({ message: 'Comment not found' });
-        }
+        .then(dbCommentData => {
+            if (!dbCommentData) {
+                res.status(404), json({ message: 'Comment not found' });
+            }
 
-        res.json(dbCommentData);
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+            res.json(dbCommentData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
 router.post('/', (req, res) => {
     if (req.session) {
         Comment.create({
-                comment_text: req.body.comment_text,
-                post_id: req.body.post_id,
-                user_id: req.session.user_id,
-            })
+            comment_body: req.body.comment_body,
+            post_id: req.body.post_id,
+            user_id: req.session.user_id,
+        })
             .then(dbCommentData => res.json(dbCommentData))
             .catch(err => {
                 console.log(err);
@@ -46,24 +46,24 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
     Comment.update({
-        comment_body: req.body.comment_text
+        comment_body: req.body.comment_body
     }, {
         where: {
             id: req.params.id
         }
     })
-    .then(dbCommentData => {
-        if (!dbCommentData) {
-            res.status(404).json({ message: 'No comment found' });
-            return;
-        }
+        .then(dbCommentData => {
+            if (!dbCommentData) {
+                res.status(404).json({ message: 'No comment found' });
+                return;
+            }
 
-        res.json(dbCommentData);
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+            res.json(dbCommentData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
 router.delete('/:id', (req, res) => {
@@ -72,17 +72,17 @@ router.delete('/:id', (req, res) => {
             id: req.params.id
         }
     })
-    .then(dbCommentData => {
-        if (!dbCommentData) {
-            res.status(404).json({ message: 'No comment found' });
-            return;
-        }
-        
-        res.json(dbCommentData);
-    }).catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+        .then(dbCommentData => {
+            if (!dbCommentData) {
+                res.status(404).json({ message: 'No comment found' });
+                return;
+            }
+
+            res.json(dbCommentData);
+        }).catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
 module.exports = router;

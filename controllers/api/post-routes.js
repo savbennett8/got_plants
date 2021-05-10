@@ -5,26 +5,13 @@ const sequelize = require('../../config/connection');
 // get all posts
 router.get('/', (req, res) => {
     Post.findAll({
-        attributes: [
-            'id',
-            'title',
-            'post_body',
-            'post_photo',
-            'created_at'
-        ],
+        attributes: ['id', 'title', 'post_body', 'post_photo', 'created_at'],
         //ensures latest posted articles appear first
         order: [['created_at', 'DESC']],
         include: [
-            //include the Comment model
             {
                 model: Comment,
-                attributes: [
-                    'id',
-                    'comment_body',
-                    'post_id',
-                    'user_id',
-                    'created_at'
-                ],
+                attributes: ['id', 'comment_body', 'post_id', 'user_id', 'created_at'],
                 include: {
                     model: User,
                     attributes: ['username']
@@ -32,11 +19,11 @@ router.get('/', (req, res) => {
             }
         ]
     })
-    .then(dbPostData => res.json(dbPostData.reverse()))
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+        .then(dbPostData => res.json(dbPostData.reverse()))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
 //get a single post
@@ -101,10 +88,10 @@ router.put('/:id', (req, res) => {
         }
         res.json(dbPostData);
     })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
 router.delete('/:id', (req, res) => {
