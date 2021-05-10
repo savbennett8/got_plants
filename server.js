@@ -3,12 +3,24 @@ const express = require('express');
 const controllers = require('./controllers');
 const sequelize = require('./config/connection');
 //helpers
-const helper = require('./utils/helper');
+const helpers = require('./utils/helpers');
 //express-handlebars
 const exphbs = require('express-handlebars');
-const hbs = exphbs.create({ helper });
+const hbs = exphbs.create({ helpers });
+//express-sessions
+const session = require('express-session');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const sess = {
+    secret: 'THIS IS A SECRET',
+    cookie: {},
+    resave: false,
+    saveUninitialized: true,
+    store: new SequelizeStore({
+        db: sequelize
+    })
+};
 
-//need to include passport
+app.use(session(sess));
 
 const app = express();
 const PORT = process.env.PORT || 3001;
