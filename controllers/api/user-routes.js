@@ -4,45 +4,45 @@ const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy;
 
 passport.use(new LocalStrategy((req, res) => {
-        User.findOne({
-            where: {
-                username: req.body.username
-            }
-        }).then(dbUserData => {
-            if (!dbUserData) {
-                res.status(400).json({ message: 'No user with that username!' });
-                return;
-            }
-            const validPassword = dbUserData.checkPassword(req.body.password);
+    User.findOne({
+        where: {
+            username: req.body.username
+        }
+    }).then(dbUserData => {
+        if (!dbUserData) {
+            res.status(400).json({ message: 'No user with that username!' });
+            return;
+        }
+        const validPassword = dbUserData.checkPassword(req.body.password);
 
-            if (!validPassword) {
-                res.status(400).json({ message: 'Incorrect password!' });
-                return;
-            }
-            req.session.save(() => {
+        if (!validPassword) {
+            res.status(400).json({ message: 'Incorrect password!' });
+            return;
+        }
+        req.session.save(() => {
 
-                req.session.user_id = dbUserData.id;
-                req.session.username = dbUserData.username;
-                req.session.loggedIn = true;
+            req.session.user_id = dbUserData.id;
+            req.session.username = dbUserData.username;
+            req.session.loggedIn = true;
 
-                res.json({ user: dbUserData, message: 'You are now logged in!' });
-            });
-        })
+            res.json({ user: dbUserData, message: 'You are now logged in!' });
+        });
+    })
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
         })
-    }));
+}));
 
 router.get('/', (req, res) => {
     User.findAll({
         attributes: { exclude: ['[password'] }
     })
-    .then(dbUserData => res.json(dbUserData))
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+        .then(dbUserData => res.json(dbUserData))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
 router.get('/:id', (req, res) => {
@@ -52,17 +52,17 @@ router.get('/:id', (req, res) => {
             id: req.params.id
         },
         include: [{
+            model: Post,
+            attributes: ['id', 'title', 'created_at']
+        },
+        {
+            model: Comment,
+            attributes: ['id', 'comment_body', 'created_at'],
+            include: {
                 model: Post,
-                attributes: ['id', 'title', 'created_at']
-            },
-            {
-                model: Comment,
-                attributes: ['id', 'comment_body', 'created_at'],
-                include: {
-                    model: Post,
-                    attributes: ['title']
-                }
+                attributes: ['title']
             }
+        }
         ],
     })
         .then(dbUserData => {
@@ -71,11 +71,11 @@ router.get('/:id', (req, res) => {
                 return;
             }
             res.json(dbUserData);
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
 router.post('/', (req, res) => {
@@ -84,7 +84,7 @@ router.post('/', (req, res) => {
         password: req.body.password
     })
 
-    .then(dbUserData => {
+        .then(dbUserData => {
             req.session.save(() => {
                 req.session.user_id = dbUserData.id;
                 req.session.username = dbUserData.username;
@@ -102,6 +102,7 @@ router.post('/', (req, res) => {
 router.post('/login', passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/login',
+    failureFlash: 'Invalid username or password.'
 }));
 
 router.post('/logout', (req, res) => {
@@ -121,17 +122,17 @@ router.put('/:id', (req, res) => {
             id: req.params.id
         }
     })
-    .then(dbUserData => {
-        if (!dbUserData[0]) {
-            res.status(404).json({ message: 'No user found' });
-            return;
-        }
-        res.json(dbUserData);
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+        .then(dbUserData => {
+            if (!dbUserData[0]) {
+                res.status(404).json({ message: 'No user found' });
+                return;
+            }
+            res.json(dbUserData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
 router.delete('/:id', (req, res) => {
@@ -140,16 +141,16 @@ router.delete('/:id', (req, res) => {
             id: req.params.id
         }
     })
-    .then(dbUserData => {
-        if (!dbUserData) {
-            res.status(404).json({ message: 'No user found' });
-            return;
-        }
-        res.json(dbUserData);
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+        .then(dbUserData => {
+            if (!dbUserData) {
+                res.status(404).json({ message: 'No user found' });
+                return;
+            }
+            res.json(dbUserData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 module.exports = router;
