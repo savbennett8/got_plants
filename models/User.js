@@ -1,9 +1,12 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+const bcrypt = require('bcrypt');
 
 //create User model
 class User extends Model {
-    //authentication from passport?
+    checkPassword(loginPW) {
+        return bcrypt.compareSync(loginPW, this.password);
+    }
 }
 
 //define table columns and configuration
@@ -22,46 +25,28 @@ User.init(
             type: DataTypes.STRING,
             allowNull: false
         },
-        //define an email column
-        email: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            //there cannot be any duplicate emails
-            unique: true,
-            //if allowNull is set to false, we can run our data through validators before creating the table data
-            validate: {
-                isEmail: true
-            }
-        },
         //define a password column
         password: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 //password must be at least four characters long
-                len: [4]
+                len: [1]
             }
         }
     },
     {
         hooks: {
-            //is there something like this for passport?
-
-            //--------------------------------------?-----------------------------------//
-
-            // //set up beforeCreate lifecycle "hook" functionality
-            // async beforeCreate(newUserData) {
-            //     newUserData.password = await bcrypt.hash(newUserData.password, 10);
-            //     return newUserData;
-            // },
-
-            // //set up beforeUpdate lifecycle "hook" functionality
-            // async beforeUpdate(updatedUserData) {
-            //     updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
-            //     return updatedUserData;
-            // }
+            async beforeCreate(newUserData) {
+                newUserData.password = await bcrypt.hash(newUserData.password, 10);
+                return newUserData;
+                
+            },
+            async beforeUpdate(updatedUserData) {
+                updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+                return updatedUserData;
+            }
         },
-
         //pass in the connection to our database
         sequelize,
         //don't auto create createdAt/updatedAt timestamp fields
