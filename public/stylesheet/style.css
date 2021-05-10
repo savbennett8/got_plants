@@ -173,6 +173,11 @@
   .edit-post-form {
     margin-bottom: 5%;
   }
+
+  .auth-forms {
+    display: flex;
+    justify-content: space-around;
+  }
   
   footer {
     border-top: 1px solid #ccc;
