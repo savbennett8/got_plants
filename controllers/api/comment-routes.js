@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-    Comment.findAll({
+    Comment.findOne({
         where: {
             id: req.params.id
         }
@@ -20,8 +20,8 @@ router.get('/:id', (req, res) => {
             if (!dbCommentData) {
                 res.status(404), json({ message: 'Comment not found' });
             }
-
-            res.json(dbCommentData);
+            res.render()
+            //res.json(dbCommentData);
         })
         .catch(err => {
             console.log(err);
