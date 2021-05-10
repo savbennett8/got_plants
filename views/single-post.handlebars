@@ -1,21 +1,5 @@
 <article class="post">
-    {{!-- {{> post-info post }} --}}
-    <div class="title">
-        <a href="/post/{{id}}" target="_blank">{{title}}</a>
-        {{#if post_photo}}
-        <span>({{post_photo}})</span>
-        {{/if}}
-    </div>
-    <div class="body">
-        <p>
-            {{post_body}}
-        </p>
-    </div>
-    <div class="meta">
-        Created by {{user.username}} on {{format_date created_at}}
-        |
-        <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
-    </div>
+    {{> post-info post }}
 
     {{#if loggedIn}}
     <form class="comment-form">
