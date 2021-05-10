@@ -22,7 +22,7 @@
         <h2>Your Posts</h2>
         <ol>
             {{#each posts as |post|}}
-            <ul>
+            <ul class="post-wrapper">
                 {{> post-info post}}
                 <br>
                 <a href="/dashboard/edit/{{post.id}}">
