@@ -20,14 +20,14 @@ router.get('/', (req, res) => {
             }
         ]
     })
-    .then(dbPostData => {
-        const posts = dbPostData.map(post => post.get({ plain: true }));
-        res.render('homepage', { posts, loggedIn: req.session.loggedIn });
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+        .then(dbPostData => {
+            const posts = dbPostData.map(post => post.get({ plain: true }));
+            res.render('homepage', { posts, loggedIn: req.session.loggedIn });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
 router.get('/login', (req, res) => {
@@ -35,11 +35,7 @@ router.get('/login', (req, res) => {
         res.redirect('/');
         return;
     }
-    res.render('login'); 
-});
-
-router.get('/signup', (req, res) => {
-    res.render('signup');
+    res.render('login');
 });
 
 router.get('post/:id', (req, res) => {
@@ -47,7 +43,7 @@ router.get('post/:id', (req, res) => {
         where: {
             id: req.params.id
         },
-        attributes: ['id','title', 'post_body', 'post_photo', 'created_at'],
+        attributes: ['id', 'title', 'post_body', 'post_photo', 'created_at'],
         include: [
             {
                 model: Comment,
@@ -63,19 +59,19 @@ router.get('post/:id', (req, res) => {
             }
         ]
     })
-    .then(dbPostData => {
-        if (!dbPostData) {
-            res.status(404).json({ message: 'No post found with this id' });
-            return;
-        }
-        const post = dbPostData.get({ plain: true });
-        console.log(post);
-        res.render('single-post', { post, loggedIn: req.session.loggedIn });
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+        .then(dbPostData => {
+            if (!dbPostData) {
+                res.status(404).json({ message: 'No post found with this id' });
+                return;
+            }
+            const post = dbPostData.get({ plain: true });
+            console.log(post);
+            res.render('single-post', { post, loggedIn: req.session.loggedIn });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
 module.exports = router;
